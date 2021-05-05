@@ -8,10 +8,11 @@
 create table authors
 (
     id serial primary key,
+    login varchar(50) not null,
+    password varchar(255) not null,
     name varchar(50) not null,
     surname varchar(50) not null,
-    patronymic varchar(50),
-    password varchar(255) not null
+    patronymic varchar(50)
 ); 
 
 -- НОВОСТИ (NEWS)
@@ -33,13 +34,14 @@ create table news
 
 
 -- АВТОРЫ (AUTHORS)
-insert into authors (surname, name, patronymic, password) values
+insert into authors (login, password, surname, name, patronymic) values
 -- мужчиты
-( 'Евдокимов', 'Дмитрий', 'Григорьевич', '111' ),
-( 'Овчаренко', 'Камиль', null, '222' ),
+( 'au1', 'd27acb5098237196da1abcf64af58820', 'Евдокимов', 'Дмитрий', 'Григорьевич' ),
+( 'au2', 'd169bcd8b2c728023af1e18a7dfae900', 'Овчаренко', 'Камиль', null ),
 -- женщиты
-( 'Маслова', 'Елизавета', 'Андреевна', '333' ),
-( 'Антонова', 'Шарлота', null, '444' );
+( 'au3', 'e25dbe211ddfb027fcb8271d833159fc', 'Маслова', 'Елизавета', 'Андреевна' ),
+( 'au4', '6df6b00eee6e11b5cb9c3405537235c2', 'Антонова', 'Шарлота', null );
+-- password = MD5(login)
 
 insert into news (index, author_id, name, path, text_news) values
 ( 6, 1, 'Новость 1', null, 'Текст 1 новости: очень интересная информация...' ),
