@@ -1,0 +1,43 @@
+.nav-link {
+    color:bisque;
+}
+
+.nav-item :hover {
+    color:rgb(255, 193, 79);
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+    color:rgb(255, 193, 79);
+    background-color: #3a3a3a;
+}
+
+#foundation {
+    margin: 80px auto 20px
+}
+
+#card_list {
+    /* background-image: url('../assets/background(bullets).jpg'); */
+    background: linear-gradient(rgba(2,2,2, 0.5), rgba(2,2,2, 0.5)),
+        url('../assets/background(bullets).jpg')
+        fixed;
+    padding-bottom: 1rem;
+}
+
+#card_list h2 {
+    padding: 1rem 0rem 0rem 0rem;
+    text-align: center;
+    color: rgb(255, 193, 79);
+    text-shadow: 4px 2px 2px black, 0 0 1em black;
+}
+
+#card_list .card {
+    width: 95%;
+    flex-direction: row; margin: 1rem auto 0rem;
+}
+
+.card img {
+    padding: 1rem 0rem 1rem 1rem;
+    /* width: 50%; */
+    max-width: 50%;
+}
+
