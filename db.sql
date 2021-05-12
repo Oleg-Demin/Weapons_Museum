@@ -2,64 +2,64 @@
 -- drop database news;
 
 
-
-
--- АВТОРЫ (AUTHORS)
-create table authors
-(
-    id serial primary key,
-    login varchar(50) not null,
-    password varchar(255) not null,
-    name varchar(50) not null,
-    surname varchar(50) not null,
-    patronymic varchar(50)
-); 
+-- drop table news;
 
 -- НОВОСТИ (NEWS)
 create table news
 (
-    id serial primary key,
+    id_news serial primary key,
     index int not null,
-    author_id int references authors (id)
-        on delete restrict on update cascade not null,
     name varchar(50) not null,
-    path varchar(255),
+    path_img varchar(255),
     text_news text not null
 );
 
--- drop table news;
--- drop table authors;
-
-
-
-
--- АВТОРЫ (AUTHORS)
-insert into authors (login, password, surname, name, patronymic) values
--- мужчиты
-( 'au1', 'd27acb5098237196da1abcf64af58820', 'Евдокимов', 'Дмитрий', 'Григорьевич' ),
-( 'au2', 'd169bcd8b2c728023af1e18a7dfae900', 'Овчаренко', 'Камиль', null ),
--- женщиты
-( 'au3', 'e25dbe211ddfb027fcb8271d833159fc', 'Маслова', 'Елизавета', 'Андреевна' ),
-( 'au4', '6df6b00eee6e11b5cb9c3405537235c2', 'Антонова', 'Шарлота', null );
--- password = MD5(login)
-
-insert into news (index, author_id, name, path, text_news) values
-( 6, 1, 'Новость 1', null, 'Текст 1 новости: очень интересная информация...' ),
-( 5, 1, 'Новость 2', null, 'Текст 2 новости: очень интересная информация...' ),
-( 4, 2, 'Новость 3', null, 'Текст 3 новости: очень интересная информация...' ),
-( 3, 2, 'Новость 4', null, 'Текст 4 новости: очень интересная информация...' ),
-( 2, 3, 'Новость 5', null, 'Текст 5 новости: очень интересная информация...' ),
-( 1, 3, 'Новость 6', null, 'Текст 6 новости: очень интересная информация...' );
 
 -- delete from news;
--- delete from authors;
 
-
-
-
--- select * from authors;
+-- ЗАПИСЬ ДАННЫХ
+insert into news (index, name, path_img, text_news) values
+( 6, 'Пулеметы', 'assets/card_images/machine_gun.jpg', '
+    Групповое либо индивидуальное стрелковое автоматическое оружие поддержки,
+    предназначенное для поражения пулями различных наземных, надводных и воздушных целей.
+    '),
+( 5, 'Дробовики', 'assets/card_images/double_barrel.jpg', '
+    Гладкоствольное огнестрельное оружие, использующее энергию фиксированного снаряда
+    для стрельбы некоторым количеством небольших круглых шариков (дробью).
+    '),
+( 4, 'Мечи', 'assets/card_images/sword.jpg', '
+    Вид холодного оружия с прямым клинком, предназначенный для рубящего и колющего ударов.
+    Лезвие заточено с одной или двух сторон. В самом широком смысле — собирательное
+    название всего длинного клинкового оружия с прямым клинком.
+    '),
+( 3, 'Пистолеты', 'assets/card_images/pistol.jpg', '
+    Ручное короткоствольное стрелковое оружие, предназначенное для поражения целей (живой силы
+    и других) на дальности до 25–50 метров. Бывает как огнестрельным, так и пневматическим.
+    '),
+( 2, 'Луки', 'assets/card_images/bow.jpg', '
+    Стрелковое оружие, предназначенное для стрельбы стрелами. Перед выстрелом стрелок
+    отклоняет предварительно натянутую тетиву, совершая при этом работу своей рукой.
+    '),
+( 1, 'Винтовки', 'assets/card_images/rifle.jpg', '
+    Винтовка — нарезное стрелковое оружие, конструктивно предназначенное для удержания и
+    управления при стрельбе двумя руками с упором приклада в плечо. 
+    ');
+    
 -- select * from news;
 
---select nw.name, nw.path, nw.text_news, au.name, au.surname, au.patronymic
-	--from news as nw
-	--join authors as au on (au.id = nw.author_id);
+
+-- Запрос который будет использован на странице index.php
+--select id_news, name, path_img, text_news
+	--from news
+	--order by index desc;
+
+
+-- Пример того, как можно будет манипулировать данными на сайте при помощи базы данных
+-- (Изменение положение статьи в очереди)
+--update news set index = 6
+	--where id_news = 1;
+
+--select id_news, index, name, path_img, text_news
+	--from news
+	--order by index desc;
+
